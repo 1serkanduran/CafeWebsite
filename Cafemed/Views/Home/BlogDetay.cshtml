@@ -1,0 +1,151 @@
+﻿@model Cafemed.Models.Model.Blog
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<!-- Title Page -->
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(/Content/SiteLayout/images/bg-title-page-03.jpg);">
+    <h2 class="tit6 t-center">
+        Blog
+    </h2>
+</section>
+
+<section>
+    <div class="bread-crumb bo5-b p-t-17 p-b-17">
+        <div class="container">
+            <a href="index.html" class="txt27">
+                Home
+            </a>
+            <span class="txt29 m-l-10 m-r-10">/</span>
+            <span class="txt29">
+                Blog
+            </span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-9">
+                <div class="p-t-80 p-b-124 bo5-r h-full p-r-50 p-r-0-md bo-none-md">
+                    <!-- Block4 -->
+
+                    <div class="blo4 p-b-63">
+                        <div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
+                            <a href="">
+                                <img src="@Model.ResimURL" alt="@Model.Baslik">
+                            </a>
+                            <div class="date-blo4 flex-col-c-m">
+                                <span class="txt30 m-b-4">
+                                    28
+                                </span>
+                                <span class="txt31">
+                                    Dec, 2018
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-blo4 p-t-33">
+                            <h4 class="p-b-16">
+                                <a href="/Home/BlogDetay/@Model.BlogId" class="tit9">@Model.Baslik</a>
+                            </h4>
+                            <div class="txt32 flex-w p-b-24">
+                                <span>
+                                    @*@DateTime.Now.ToString("D")*@
+                                    <span class="m-r-6 m-l-4">|</span>
+                                </span>
+                                <span>
+                                    @Model.Kategoriler.KategoriAd
+                                    <span class="m-r-6 m-l-4">|</span>
+                                </span>
+                                @*<span>
+                        8 Comments
+                    </span>*@
+                            </div>
+                            <p>
+                                @Html.Raw(Model.Icerik)
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Leave a comment -->
+                    <form class="leave-comment p-t-10">
+                        <h4 class="txt33 p-b-14">
+                            Yorum Yap
+                        </h4>
+                        <textarea class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40" id="icerik" typeof="text" placeholder="Icerik..."></textarea>
+                        <div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" id="adsoyad" type="text" placeholder="Adınız *">
+                        </div>
+                        <div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" id="eposta" type="email" placeholder="Email *">
+                        </div>
+                        <!-- Button3 -->
+                        <button type="submit" id="gonder" class="btn3 flex-c-m size31 txt11 trans-0-4">
+                            Yorum Yap
+                        </button>
+                    </form>
+
+                    <div class="row mt-4">
+                        <div>
+                            <h3>Blog Makale Yorumları</h3>
+                            @foreach (var item in Model.Yorums.OrderByDescending(x => x.YorumId).Where(x => x.Onay == true))
+                            {
+                                <p class="mt-1">@item.AdSoyad - @item.Eposta</p>
+                                <p class="mt-1">@item.Icerik</p>
+                                <hr />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="sidebar2 p-t-80 p-b-80 p-l-20 p-l-0-md p-t-0-md">
+                    <!-- Search -->
+                    <div class="search-sidebar2 size12 bo2 pos-relative">
+                        <input class="input-search-sidebar2 txt10 p-l-20 p-r-55" type="text" name="search" placeholder="Search">
+                        <button class="btn-search-sidebar2 flex-c-m ti-search trans-0-4"></button>
+                    </div>
+                    <!-- Categories -->
+                    <div class="categories">
+                        <h4 class="txt33 bo5-b p-b-35 p-t-58">
+                            Kategoriler
+                        </h4>
+                        @{
+                            Html.RenderAction("BlogKategoriPartial", "Home");
+                        }
+                    </div>
+                    <!-- Most Popular -->
+                    <div class="popular">
+                        <h4 class="txt33 p-b-35 p-t-58">
+                            Son Blog Kayıtları
+                        </h4>
+                        <ul>
+                            @{
+                                Html.RenderAction("BlogKayitPartial", "Home");
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/Content/SiteLayout/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#gonder").click(function () {
+             var yorumunuz = $("#icerik").val();
+            var adisoyadi = $("#adsoyad").val();
+            var epostasi = $("#eposta").val();
+            $.ajax({
+                url: '/Home/YorumYap/',
+                data: { icerik: yorumunuz,adsoyad:adisoyadi,eposta: epostasi,blogid:@Model.BlogId },
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    alert("Yorumunuz eklendi, kontrol edildikten sonra yayınlanacaktır.");
+                }
+            });
+        });
+    })
+</script>

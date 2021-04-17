@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+<div class="form">
+    <form class="form-validate form-horizontal" id="feedback_form" method="post" action="/Iletisim/Create/" enctype="multipart/form-data">
+        <div class="form-group ">
+            <label for="cname" class="control-label col-lg-2">Adres<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control" id="Adres" name="Adres" minlength="5" type="text" required />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cemail" class="control-label col-lg-2">Telefon<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control " id="Telefon" type="text" name="Telefon" required />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cemail" class="control-label col-lg-2">Facebook<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control " id="Facebook" type="text" name="Facebook" required />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cemail" class="control-label col-lg-2">Instagram<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control " id="İnstagram" type="text" name="İnstagram" required />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cemail" class="control-label col-lg-2">Whatsapp<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control " id="Whatsapp" type="text" name="Whatsapp" required />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cemail" class="control-label col-lg-2">Açılış - Kapanış<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control " id="AcilisKapanis" type="text" name="AcilisKapanis" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-primary" type="submit" id="btn1">Kaydet</button>
+                <button class="btn btn-default" type="button"><a href="/Iletisim/Index/">İptal</a></button>
+            </div>
+        </div>
+    </form>
+</div>

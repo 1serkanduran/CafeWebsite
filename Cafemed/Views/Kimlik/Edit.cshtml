@@ -1,0 +1,54 @@
+﻿@model Cafemed.Models.Model.Kimlik
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4>Kimlik Düzenle</h4>
+
+<div class="form">
+    <form class="form-validate form-horizontal" id="feedback_form" method="post" action="/Kimlik/Edit/@Model.KimlikId" enctype="multipart/form-data">
+        <div class="form-group ">
+            <label for="cname" class="control-label col-lg-2">Başlık <span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control" id="Title" name="Title" minlength="5" type="text" required value="@Model.Title" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cemail" class="control-label col-lg-2">Anahtar Kelimeler<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control " id="Keywords" type="text" name="Keywords" required value="@Model.Keywords" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="curl" class="control-label col-lg-2">Açıklama</label>
+            <div class="col-lg-10">
+                <textarea class="ckeditor" name="Description" required>@Model.Description</textarea>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cname" class="control-label col-lg-2">Önceki Logo<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <img src="@Model.LogoURL" height="150" width="150" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="cname" class="control-label col-lg-2">Logo<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input type="file" class="form-control" id="LogoURL" name="LogoURL" accept=".jpg,.jpeg,.png" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="ccomment" class="control-label col-lg-2">Unvan</label>
+            <div class="col-lg-10">
+                <input class="form-control " id="Unvan" type="text" name="Unvan" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-primary" type="submit" id="btn1">Kaydet</button>
+                <button class="btn btn-default" type="button"><a href="/Kimlik/Index/">İptal</a></button>
+            </div>
+        </div>
+    </form>
+</div>

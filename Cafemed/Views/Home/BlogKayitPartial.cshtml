@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Cafemed.Models.Model.Blog>
+@foreach (var item in Model)
+{
+<li class="flex-w m-b-25">
+    <div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
+        <a href="#">
+            <img src="@item.ResimURL" alt="@item.Baslik">
+        </a>
+    </div>
+    <div class="size28">
+        <a href="/Home/BlogDetay/@item.BlogId" class="dis-block txt28 m-b-8">
+            @item.Baslik
+        </a>
+        @*<h4>  @Html.Raw(item.Icerik.Substring(0, 25))</h4>*@
+    </div>
+</li>
+}
+
+

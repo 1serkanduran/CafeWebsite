@@ -1,0 +1,25 @@
+﻿@model Cafemed.Models.Model.MenuKategori
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4>Menü Kategori Düzenle</h4>
+
+<div class="form">
+    <form class="form-validate form-horizontal" id="feedback_form" method="post" action="/MenuKategori/Edit/@Model.MenuKategoriId" enctype="multipart/form-data">
+        <div class="form-group ">
+            <label for="cname" class="control-label col-lg-2">Menü Kategori Adı<span class="required">*</span></label>
+            <div class="col-lg-10">
+                <input class="form-control w-25" id="MenuKategoriAd" name="MenuKategoriAd" minlength="5" type="text" required value="@Model.MenuKategoriAd"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-primary" type="submit" id="btn1">Kaydet</button>
+                <button class="btn btn-default" type="button"><a href="/MenuKategori/Index/">İptal</a></button>
+            </div>
+        </div>
+    </form>
+</div>
+

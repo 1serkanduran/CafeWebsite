@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Cafemed.Models.Model.Hakkimizda>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4>Hakkımızda</h4>
+<table class="table table-striped table-advance table-hover">
+    <tbody>
+        <tr>
+            <th><i class="icon_profile"></i>Başlık</th>
+            <th><i class="icon_calendar"></i>Açıklama</th>
+            <th><i class="icon_calendar"></i>İşlemler</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.Raw(item.Baslik)</td>
+                <td>@Html.Raw(item.Aciklama)</td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-primary" alt="Düzenle" href="/Hakkimizda/Edit/@item.HakkimizdaId">Düzenle</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

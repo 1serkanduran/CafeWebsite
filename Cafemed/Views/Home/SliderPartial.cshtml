@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Cafemed.Models.Model.Slider>
+@{
+    Layout = null;
+}
+
+<!-- Slide1 -->
+<section class="section-slide">
+    <div class="wrap-slick1">
+        <div class="slick1">
+            @foreach (var item in Model)
+            {
+            <div class="item-slick1 item1-slick1"
+                 style="background-image: url(@item.ResimURL)">
+                <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
+                          data-appear="fadeInDown">
+                        @item.Baslik
+                    </span>
+                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37"
+                        data-appear="fadeInUp">
+                        CafeMed Hospital
+                    </h2>
+                    <div class="wrap-btn-slide1 animated visible-false"
+                         data-appear="zoomIn">
+                        <!-- Button1 -->
+                        <a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                            Devamı İçin Tıkla
+                        </a>
+                    </div>
+                </div>
+            </div>
+            }
+            
+        </div>
+        <div class="wrap-slick1-dots"></div>
+    </div>
+</section>
