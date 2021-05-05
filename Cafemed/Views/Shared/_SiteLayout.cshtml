@@ -3,12 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - @ViewBag.Kimlik.Title</title>
+    <meta name="description" content="@Html.Raw(ViewBag.Kimlik.Description)" />
+    <meta name="keywords" content="@ViewBag.Kimlik.Keywords"
     <link href="~/Content/SiteLayout/Site.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="/Content/SiteLayout/images/icons/favicon.png" />
+    <link rel="icon" type="image/png" href="@ViewBag.Kimlik.LogoURL" />
     <!--===============================================================================================-->
     <link rel="stylesheet"
           type="text/css"
@@ -71,22 +73,22 @@
                         <nav class="menu">
                             <ul class="main_menu">
                                 <li>
-                                    <a href="/Home/Index/">Anasayfa</a>
+                                    <a href="/Anasayfa">Anasayfa</a>
                                 </li>
                                 <li>
-                                    <a href="/Home/Menu/">Menu</a>
+                                    <a href="/Menu">Menu</a>
                                 </li>
                                 <li>
-                                    <a href="/Home/Galeri/">Galeri</a>
+                                    <a href="/Galeri">Galeri</a>
                                 </li>
                                 <li>
-                                    <a href="/Home/Hakkimizda/">Hakkımızda</a>
+                                    <a href="/Hakkimizda">Hakkımızda</a>
                                 </li>
                                 <li>
-                                    <a href="/Home/Blog/">Blog</a>
+                                    <a href="/BlogPost">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="/Home/Iletisim/">Bize Ulasın</a>
+                                    <a href="/Iletisim">Bize Ulasın</a>
                                 </li>
                             </ul>
                         </nav>
@@ -115,22 +117,22 @@
         <!-- - -->
         <ul class="menu-sidebar p-t-95 p-b-70">
             <li class="t-center m-b-13">
-                <a href="/Home/Index/" class="txt19">Anasayfa</a>
+                <a href="/Anasayfa" class="txt19">Anasayfa</a>
             </li>
             <li class="t-center m-b-13">
-                <a href="/Home/Menu/" class="txt19">Menu</a>
+                <a href="/Menu" class="txt19">Menu</a>
             </li>
             <li class="t-center m-b-13">
-                <a href="/Home/Galeri/" class="txt19">Galeri</a>
+                <a href="/Galeri" class="txt19">Galeri</a>
             </li>
             <li class="t-center m-b-13">
-                <a href="/Home/Hakkimizda/" class="txt19">Hakkımızda</a>
+                <a href="/Hakkimizda" class="txt19">Hakkımızda</a>
             </li>
             <li class="t-center m-b-13">
-                <a href="/Home/Blog/" class="txt19">Blog</a>
+                <a href="/BlogPost" class="txt19">Blog</a>
             </li>
             <li class="t-center m-b-33">
-                <a href="/Home/Iletisim/" class="txt19">Bize Ulasın</a>
+                <a href="Iletisim" class="txt19">Bize Ulasın</a>
             </li>
         </ul>
         <!-- - -->
@@ -139,51 +141,10 @@
             <h4 class="txt20 m-b-33">Gallery</h4>
             <!-- Gallery -->
             <div class="wrap-gallery-sidebar flex-w">
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-01.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-01.jpg" alt="GALLERY" />
-                </a>
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-02.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-02.jpg" alt="GALLERY" />
-                </a>
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-03.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-03.jpg" alt="GALLERY" />
-                </a>
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-05.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-05.jpg" alt="GALLERY" />
-                </a>
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-06.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-06.jpg" alt="GALLERY" />
-                </a>
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-07.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-07.jpg" alt="GALLERY" />
-                </a>
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-09.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-09.jpg" alt="GALLERY" />
-                </a>
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-10.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-10.jpg" alt="GALLERY" />
-                </a>
-                <a class="item-gallery-sidebar wrap-pic-w"
-                   href="/Content/SiteLayout/images/photo-gallery-11.jpg"
-                   data-lightbox="gallery-footer">
-                    <img src="/Content/SiteLayout/images/photo-gallery-thumb-11.jpg" alt="GALLERY" />
-                </a>
+               @{ 
+                   Html.RenderAction("RightMenuPartial");
+               }
+                
             </div>
         </div>
     </aside>
@@ -200,29 +161,7 @@
     </div>
     <!-- Container Selection1 -->
     <div id="dropDownSelect1"></div>
-    <!-- Modal Video 01-->
-    <div class="modal fade"
-         id="modal-video-01"
-         tabindex="-1"
-         role="dialog"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document" data-dismiss="modal">
-            <div class="close-mo-video-01 trans-0-4"
-                 data-dismiss="modal"
-                 aria-label="Close">
-                &times;
-            </div>
-            <div class="wrap-video-mo-01">
-                <div class="w-full wrap-pic-w op-0-0">
-                    <img src="/Content/SiteLayout/images/icons/video-16-9.jpg" alt="IMG" />
-                </div>
-                <div class="video-mo-01">
-                    <iframe src="https://www.youtube.com/embed/5k1hSu2gdKE?rel=0&amp;showinfo=0"
-                            allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <!--===============================================================================================-->
     <script type="text/javascript"
             src="/Content/SiteLayout/vendor/jquery/jquery-3.2.1.min.js"></script>

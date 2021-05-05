@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<Cafemed.Models.Model.Kategoriler>
+@using Cafemed.Helper;
 <ul>
     @foreach (var item in Model)
     {
         <li class="bo5-b p-t-8 p-b-8">
-            <a href="/Home/KategoriBlog/@item.KategoriId" class="txt27">
+            <a href="/BlogPost/@SeoHelper.ToSeoUrl(item.KategoriAd).ToLower()/@item.KategoriId" class="txt27">
                 @item.KategoriAd
             </a>
             <span>(@item.Blogs.Count)</span>

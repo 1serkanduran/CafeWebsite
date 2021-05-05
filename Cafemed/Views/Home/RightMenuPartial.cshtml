@@ -1,0 +1,8 @@
+﻿@foreach (var item in ViewBag.Galeri)
+{
+    <a class="item-gallery-sidebar wrap-pic-w"
+       href="@item.ResimURL"
+       data-lightbox="gallery-footer">
+        <img src="@item.ResimURL" alt="GALLERY" />
+    </a>
+}

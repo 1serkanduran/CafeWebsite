@@ -18,6 +18,7 @@ namespace Cafemed.Controllers
         // GET: Yorum
         public ActionResult Index()
         {
+            ViewBag.YorumOnay = db.Yorum.Where(x => x.Onay == false).Count();
             var yorum = db.Yorum.Include(y => y.Blog).OrderByDescending(x=>x.YorumId);
             return View(yorum.ToList());
         }

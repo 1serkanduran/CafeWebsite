@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Cafemed.Models.Model.Blog>
+@using Cafemed.Helper
 @foreach (var item in Model)
 {
 <li class="flex-w m-b-25">
@@ -8,7 +9,7 @@
         </a>
     </div>
     <div class="size28">
-        <a href="/Home/BlogDetay/@item.BlogId" class="dis-block txt28 m-b-8">
+        <a href="/BlogPost/@SeoHelper.ToSeoUrl(item.Baslik).ToLower()-@item.BlogId" class="dis-block txt28 m-b-8">
             @item.Baslik
         </a>
         @*<h4>  @Html.Raw(item.Icerik.Substring(0, 25))</h4>*@
